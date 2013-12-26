@@ -13,7 +13,7 @@ task :setup do
         if name == 'database'
           # 如果想使用 sqlite，之前要运行 bundle install --without pg，这个 without 参数会保留到 .bundle/config 文件
           # 根据 bundle 安装的数据库适配器直接选择相应的配置文件，默认选择 pg
-          db_adapter = Bundler.load.specs.to_hash.keys.select{|name| ['pg','sqlite3'].include?(name)}.sort_by(&:size).first
+          db_adapter = Bundler.load.specs.to_hash.keys.select{|name| ['pg','sqlite3','mysql2'].include?(name)}.sort_by(&:size).first
           puts "using #{db_adapter} dabase adapter."
           source_file += ".#{db_adapter}"
         end
@@ -32,7 +32,10 @@ task :setup do
     end
     Rake::Task['db:test:prepare'].invoke
 
-    puts "\n4. Done! You can run 'rails server' now."
+    puts "\n4. Done! You can run 'guard' now."
+
+    puts "\n5. Open /delivered_mails in browser if you need to receive e-mail."
+
     puts "\nPlease contact us if you have any problems. Thanks.\n"
   end
 end

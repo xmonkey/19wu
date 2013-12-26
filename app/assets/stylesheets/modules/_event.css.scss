@@ -1,0 +1,119 @@
+// event show
+header {
+  .event-title {
+    color: $grayDark;
+  }
+  .btn {
+    margin-left: 5px;
+  }
+}
+
+.event {
+  h1 {
+    font-size: $baseFontSize * 2.25;
+  }
+  h2 {
+    font-size: $baseFontSize * 1.25;
+    color: $gray;
+  }
+}
+
+.social-count {
+  @include social-count(hsl(0, 0%, 98%), $btnBorder);
+}
+
+.event-body {
+  margin-top: $baseLineHeight;
+}
+
+.event-sidebar {
+  background-color: $grayLighter;
+  padding: $baseLineHeight;
+  margin-bottom: $baseLineHeight;
+  > ul {
+    margin-bottom: $baseLineHeight;
+    > li {
+      margin-bottom: $baseLineHeight / 2;
+    }
+  }
+}
+
+.event-map img {
+  border: 1px solid darken($grayLighter, 15%);
+}
+.event-contact {
+  margin-left: $baseFontSize / 2;
+  a {
+    color: $grayDarker;
+    margin-right: 5px;
+  }
+}
+.event-participants {
+  @extend .horizontal;
+  li {
+    padding: 0 4px 4px 0;
+  }
+}
+
+// event list
+.event-item-time, .event-item-location {
+  @extend .muted;
+}
+
+// event form
+@media (max-width: 979px) {
+  input#event_slug {
+    width: 140px;
+  }
+}
+
+// event follower
+.event-follower{
+  h2 {
+    font-size: $baseFontSize * 1.25;
+  }
+}
+.event-follower-title{
+    font-size: $baseFontSize * 2.25;
+    font-weight: bold;
+}
+
+.event-follower-title:hover{
+  text-decoration:none; 
+}
+
+.follower-list{
+  border-top: 1px solid #DDDDDD;
+  margin: 15px 0;
+  list-style: none outside none;
+}
+
+.follower-item{
+  border-bottom: 1px solid #DDDDDD;
+  padding: 5px 0;
+}
+
+.follower-item .avatar-wrapper{
+  float: left;
+  line-height: 0;
+  margin-right: 10px;
+  padding: 1px;
+}
+.follower-url{
+  display: inline-block;
+  line-height: 30px;
+  margin-right: 5px;
+}
+
+.follower-login-name{
+  font-weight: bold;
+}
+
+.follower-name{
+  color: #999999;
+  font-style: bold;
+}
+
+.event-summary > h2:first-child {
+  color: #0088cc;
+}

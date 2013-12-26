@@ -1,0 +1,12 @@
+h3 {
+  @extend h5;
+  line-height: $baseLineHeight;
+}
+
+.space {
+  padding-right: $baseFontSize / 2;
+}
+
+.margin-right {
+  margin-right: $baseFontSize / 2;
+}

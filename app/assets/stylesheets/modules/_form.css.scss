@@ -16,5 +16,46 @@ form {
     .btn {
       @extend .btn-block;
     }
+    .input-large {
+      min-height: $baseLineHeight * 2;
+      height: $baseLineHeight * 2;
+    }
+    .btn-large {
+      padding: 9px 19px; // http://git.io/D9i_5g
+    }
+  }
+}
+
+label.required abbr {
+  color: #CC0000;
+}
+
+/* fix the left margin when apply the span* classes */
+.compound-controls {
+  margin-left: 0;
+}
+
+.form-actions > .btn {
+  margin-right: 5px;
+}
+
+.compound_datetime {
+  @include clearfix;
+  .date {
+    float: left;
+  }
+  .time {
+    float: left;
+    margin-left: 15px;
+  }
+  .datepicker {
+    width: 6em;
+  }
+  .timepicker {
+    width: 6em;
+    margin-top: 1px;
+  }
+  .add-on {
+    margin-top: 1px;
   }
 }

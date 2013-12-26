@@ -1,0 +1,24 @@
+= render 'events/header'
+.row
+  = render 'participants/submenu'
+  .span9
+    = link_to '导出xls', export_event_participants_path(@event, format: 'xlsx'), class: 'btn btn-info pull-right'
+    table.table
+      thead
+        th 签到码
+        th 门票
+        th 姓名
+        th 手机
+        th 状态
+      tbody
+        - @participants.each do |participant|
+          tr
+            td
+              = participant.checkin_code
+              span （总票数:#{participant.order.quantity}）
+            td
+              - participant.order.items.each do |item|
+                div #{item.quantity} x #{item.name}
+            td = participant.user.name
+            td = participant.user.phone
+            td = participant.joined? ? '已签到' : '未签到'

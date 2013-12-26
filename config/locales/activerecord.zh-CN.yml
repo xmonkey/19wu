@@ -1,10 +1,83 @@
 zh-CN:
+  errors:
+    messages:
+      quantity_overflow: '您购买的票数超过了最大数量。'
+      invalid_login: 只允许大小写字母、数字和下划线
+      event_order:
+        miss_shipping_address: 购买的门票包含发票，但没有提供收货地址
+      event_order_participant:
+        invalid_code: 签到码不正确。
+        used: 已于 %{time} 使用，请勿重复签到。
+        invalid_order: 状态为 %{status}，不能签到。
+      event_order_refund:
+        amount_in_cents:
+          less_than: 必须小于已支付金额 %{paid_amount} 元。
   activerecord:
     models:
       user: "用户"
+      event: "活动"
+      event_summary: "活动总结"
+      event_change: "变更"
+      event_ticket: "门票"
+      profile: "资料"
+      group_topic: "贴子"
+      event_order_refund: "退款申请"
     attributes:
       user:
-        login: "登录名"
+        login: "用户名"
         email: "Email 地址"
+        phone: "手机号码"
+        phone_valid_code: "校验码"
         password: "密码"
+        password_confirmation: "确认密码"
+        current_password: "当前密码"
         remember_me: "记住我"
+        created_at: "注册时间"
+      event:
+        title: "主题"
+        slug: "活动链接"
+        start_time: "开始时间"
+        compound_start_time: "开始时间"
+        end_time: "结束时间"
+        compound_end_time: "结束时间"
+        location: "地点"
+        location_guide: "交通指引"
+        content: "简介"
+      event_summary:
+        content: "总结"
+      event_change:
+        content: "变更内容"
+      event_order:
+        quantity: '门票数量'
+        items: '门票'
+      event_order_refund:
+        amount: '退款金额'
+        amount_in_cents: '退款金额'
+        reason: '退款原因'
+      event_order_fulfillment:
+        tracking_number: '顺丰快递单号'
+      event_order_participant:
+        order: '订单'
+        checkin_at: '签到码'
+      event_ticket:
+        name: "名称"
+        price: "价格"
+        description: "描述"
+        tickets_quantity: "活动总票数"
+        require_invoice: "是否提供发票"
+      profile:
+        name: "名字"
+        website: "主页"
+        bio: "个人简介"
+      group_topic:
+        title: "标题"
+        body: "正文"
+    state_machines:
+      event_order:
+        states:
+          pending: '未支付'
+          paid: '已支付'
+          canceled: '已取消'
+          closed: '已关闭'
+          refund_pending: '等待处理退款'
+          refund_approved: '退款处理中'

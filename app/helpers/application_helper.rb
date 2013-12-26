@@ -21,8 +21,10 @@ module ApplicationHelper
   end
 
   def body_attributes
+    class_attributes = [user_signed_in? ? 'signed-in' : 'signed-out']
+    class_attributes << 'l-event' if controller_name == 'mockup' and action_name == 'event'
     {
-      :class => user_signed_in? ? 'signed_in' : 'signed_out'
+      :class =>  class_attributes
     }
   end
 
@@ -34,6 +36,10 @@ module ApplicationHelper
     end
   end
 
+  def render_nav_bar
+    render 'signed_in_nav_bar' if user_signed_in?
+  end
+
   # Allow page to place flashes in specified place.
   # If the page did, do not render again.
   def render_flashes
@@ -41,5 +47,36 @@ module ApplicationHelper
       @_flahses_rendered = true
       render 'flashes'
     end
+  end
+
+  def render_password_label_with_forget_link(object)
+    link = link_to(t('devise.views.links.forget_pass'),
+                   new_password_path(resource_name),
+                   :tabindex => -1)
+
+    html = object.class.human_attribute_name(:password) +
+      ' (' + content_tag(:small, link) + ')'
+
+    html.html_safe
+  end
+
+  def render_settings_tab(label, path, active_controller)
+    if controller_name == active_controller
+      content_tag :li, :class => 'active' do
+        link_to label, '#settings-main'
+      end
+    else
+      content_tag :li do
+        link_to label, path
+      end
+    end
+  end
+
+  def baidu_map_enabled?
+    ! Settings.baidumap_ak.empty?
+  end
+
+  def current_path
+    request.path
   end
 end

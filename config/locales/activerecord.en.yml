@@ -1,0 +1,51 @@
+en:
+  errors:
+    messages:
+      quantity_overflow: '您购买的票数超过了最大数量。'
+  activerecord:
+    models:
+      user: "用户"
+      event: "活动"
+      event_summary: "活动总结"
+      event_change: "变更"
+      event_ticket: "门票"
+      profile: "资料"
+      group_topic: "贴子"
+    attributes:
+      user:
+        login: "用户名"
+        email: "Email 地址"
+        phone: "手机号码"
+        phone_valid_code: "校验码"
+        password: "密码"
+        password_confirmation: "确认密码"
+        current_password: "当前密码"
+        remember_me: "记住我"
+        created_at: "注册时间"
+      event:
+        title: "主题"
+        slug: "活动链接"
+        start_time: "开始时间"
+        compound_start_time: "开始时间"
+        end_time: "结束时间"
+        compound_end_time: "结束时间"
+        location: "地点"
+        location_guide: "交通指引"
+        content: "简介"
+      event_summary:
+        content: "总结"
+      event_change:
+        content: "变更内容"
+      event_ticket:
+        name: "名称"
+        price: "价格"
+        description: "描述"
+        tickets_quantity: "活动总票数"
+        require_invoice: "是否提供发票"
+      profile:
+        name: "名字"
+        website: "主页"
+        bio: "个人简介"
+      group_topic:
+        title: "标题"
+        body: "正文"

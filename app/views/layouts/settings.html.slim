@@ -1,0 +1,12 @@
+- content_for :content do
+  .row
+    aside.span2
+      .tabbable.tabs-left
+        ul.nav.nav-tabs
+          = render_settings_tab(t('layout.account'), account_path, 'registrations')
+          = render_settings_tab(t('layout.profile'), profile_path, 'profiles')
+          = render_settings_tab(t('layout.user_phone'), edit_user_phone_path, 'user_phones')
+
+    .span10#settings-main = yield
+
+= render :template => 'layouts/application'

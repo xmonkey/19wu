@@ -1,104 +1,65 @@
-# 19wu [![Build Status](https://travis-ci.org/saberma/19wu.png)](https://travis-ci.org/saberma/19wu)
+## 19wu
+[![Build Status](https://travis-ci.org/19wu/19wu.png?branch=master)](https://travis-ci.org/19wu/19wu)
+[![Code Climate](https://codeclimate.com/github/19wu/19wu.png)](https://codeclimate.com/github/19wu/19wu)
+[![Dependency Status](https://gemnasium.com/19wu/19wu.png)](https://gemnasium.com/19wu/19wu)
+[![Coverage Status](https://coveralls.io/repos/19wu/19wu/badge.png?branch=master)](https://coveralls.io/r/19wu/19wu)
 
-19wu - 卖活动票的小屋
+这里是 [19wu.com](http://19wu.com) 网站源代码.
 
-有兴趣参与的同学，请点击 [这里](https://github.com/saberma/19wu/issues/2) 留名
-有兴趣加入核心研发团队的请在 [这里](https://github.com/saberma/19wu/issues/9) 申请
+## 官网
 
-### 项目是做什么的？
+http://19wu.com/szruby
 
-有些线下活动（e.g.RubyConfChina）需要卖票，19wu 就是一个卖票的电子商务平台。
+部署在 Heroku 的测试网站
 
-### 利用 ShopQi 也能卖票，为什么要重新做？
+http://saberma-19wu.herokuapp.com
+Email：`demo@19wu.com`
+Password：`666666`
 
-[ShopQi](http://github.com/saberma/shopqi) 是一个商品网上交易平台，而票务平台的购买流程会简单一些，但需要更多的细化功能，如生成电子票、签到等，重新开始一个专门的项目比在 ShopQi 的基础上修改更合适一些。
+## 系统要求
 
-### 已经有其他售票平台了，这个有什么差异的地方？
+* Ruby 2.0.0 (or 1.9.3)
+* PostgreSQL (or MySQL, SQLite)
+* ImageMagick
 
-最主要差异是完全开源免费，另外可以提供代卖公司票的服务（提供发票并快递给顾客）。
+## 安装步骤
 
-### 为什么开源？
+```bash
+git clone git://github.com/19wu/19wu.git
+cd 19wu
+bundle install --without sqlite3 mysql2
+rake setup
+rails server
+```
 
-最好的产品是自己会去用的产品，最好的开源项目也是如此。比如说论坛，业务简单、容易理解，所以开源出来，大家可以边用边完善，可以提供很好的交流提升机会。
+[详情](https://github.com/19wu/19wu/issues/19)
 
-而售票平台可以算是较简单的电子商务项目，容易上手，很适合开源出来，参与门槛也不高。
+## 文档资源
 
-### 现在一点代码都没有？
+[Wiki文档](https://github.com/19wu/19wu/wiki)
 
-是的，之前做 ShopQi 时，项目功能太多，后期不少朋友想要贡献代码非常困难。
-
-所以这个项目，我觉得可以不急着写代码，先推迟 2 周，欢迎大家参与，我将于 **12月24日** 开始开发，并持续利用业余时间进行完善。
-
-### 免费的线下活动可以用这个吗？
-
-可以的，只要把票价设置为0，就是免费活动了，通过 19wu 可以进行签到、统计等操作。
-
-## 技术选型
-
-一个约定：代码不超过 **2000** 行
-
-* Rails 3
-* 数据库使用 PostgreSQL
-* 后台任务使用 delayed_job，而不使用 resque，避免对 redis 的依赖
-* 前端基于 [Bootstrap](http://twitter.github.com/bootstrap) 和 [Spine.js](http://spinejs.com)
-
-查看 [WIki:技术栈](https://github.com/saberma/19wu/wiki/技术栈) 了解更多。
-
-## 开发计划
-
-开发时会针对一个个小的功能点提出 issue，提交的代码要与相应 issue 关联。
-
-### Week #1
-
-做出最小可用原型，不涉及支付流程等。
-
-* 主办方用户注册、发起免费活动
-* 普通用户报名参加
-* 主办方用户查看参与者用户列表
-
-域名备案通过即上线内部试用。
-
-### Week #2
-
-加入签到功能，先只支持二三十人左右的小型会议，不涉及电子票码生成。
-
-* 参与者用户到达会场后，由主办方用户直接勾选签到
-
-### Week #3
-
-支持手机访问。
-
-* 参与者用户查看活动时间、地点
-* 参与者用户查看参与者列表（独立列表，带头像），对其他参与者有个基本了解。
-
-
-以上为初步计划，待进一步讨论细化。
+[常见问题](https://github.com/19wu/19wu/wiki/%E6%96%B0%E6%89%8B%E9%97%AE%E9%A2%98%E6%B1%87%E6%80%BB)
 
 ## 团队
 
-### 管理团队
+* [@saberma](https://github.com/saberma)
+* [@doitian](https://github.com/doitian)
+* [@jasl](https://github.com/jasl)
+* [@lgn21st](https://github.com/lgn21st)
+* [@windy](https://github.com/windy)
 
-* [马海波 @saberma](https://github.com/saberma)
-* [吕国宁 @lgn21st](https://github.com/lgn21st)
-* [李亚飞 @windy](https://github.com/windy)
+[所有贡献者](https://github.com/19wu/19wu/graphs/contributors)
 
-### 贡献者
+[如何贡献](https://github.com/19wu/19wu/blob/master/CONTRIBUTING.md)
 
-[所有贡献者](https://github.com/saberma/19wu/graphs/contributors)
+## 赞助商
 
-* 持续招募中。。。
-* 加入条件：无，只要你有时间参与就行
+感谢以下赞助商：
 
-### 如何参与
-
-* 在 [Issue](https://github.com/saberma/19wu/issues) 发起讨论
-* 对提交的代码有任何疑问时发起讨论
-* 开发一些功能（需要带测试，以保证此功能在后续开发时不被破坏）
-* 试用已有的功能，提出建议
-* 向身边的朋友介绍 19wu
-
-[更多...](https://github.com/saberma/19wu/blob/master/CONTRIBUTING.md)
+* [推立方](http://tui3.com/) 短信赞助商
 
 ## License
 
-[The MIT License](https://github.com/saberma/19wu/blob/master/LICENSE)
+[The MIT License](https://github.com/19wu/19wu/blob/master/LICENSE)
+
+Project is a member of the [OSS Manifesto](http://ossmanifesto.org).

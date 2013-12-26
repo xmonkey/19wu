@@ -1,50 +1,54 @@
 doctype html
-html
+html ng-app='19wu'
   head
-    title =t('layout.title')
+    title = t('layout.title')
     meta name="viewport" content="width=device-width, initial-scale=1.0"
+    link href=image_path('favicon.ico') rel="shortcut icon" type="image/x-icon"
     = stylesheet_link_tag "application", media: "all"
     = csrf_meta_tags
+    /[if lt IE 7]
+      css:
+        #wrap {display:table;height:100%;width:100%}
 
   body *body_attributes
     header#header
       .navbar.navbar-static-top
         .navbar-inner
           .container
-            a.btn.btn-navbar data-toggle="collapse" data-target=".nav-collapse"
-              span.icon-bar
-              span.icon-bar
-              span.icon-bar
-
             a.brand href="/"
-              span.icon-19wu
-              span= t('layout.19wu')
+              img.logo-wordmark src=image_path('logo-wordmark.png')
+              span.alpha alpha
+            = render_nav_bar
 
             .nav-collapse.collapse
               = render_user_bar
 
-    #main role="main"
+    #wrap
+      #main role="main"
 
-      .container
-        = render_flashes
-
-      = yield :before_content
-
-      #content
         .container
-          = yield
+          = render_flashes
+
+        = yield :before_content
+
+        #content
+          .container
+            = content_for?(:content) ? yield(:content) : yield
 
     footer#footer
       .container
-        p.pull-right &copy; #{Date.current.year} 19wu.com
-        ul.pull-left.horizontal
-          li
-            a href="http://github.com/saberma/19wu" = t('layout.opensource')
-          li.muted
-            | /
-          li
-            a href="mailto:mahb45@gmail.com" = t('layout.contact_us')
+        .row
+          .span8
+            p = t('layout.sponsors.title')
+            = link_to image_tag('sponsors/tui3.png'), 'http://tui3.com', target: '_blank', title: t('layout.sponsors.sms'), data: {toggle: 'tooltip'}
+          .span4
+            ul.pull-right
+              li = link_to t('layout.feedback'),  "https://github.com/19wu/19wu/issues/new"
+              li = link_to t('layout.contact_us'), "mailto:mahb45@gmail.com"
+              li = link_to t('layout.opensource'), "http://github.com/19wu/19wu"
+              -#li &copy; #{Date.current.year} #{t('layout.copyright')}
 
     = javascript_include_tag "application"
+    = javascript_include_tag "locales/#{locale}"
+    = timeago_script_tag
     = yield :body_bottom
-

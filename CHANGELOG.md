@@ -1,10 +1,3 @@
-# CHANGELOG
+# 变更记录
 
-## 0.0.1 (开发中)
-
-*   follow [oss manifesto](http://ossmanifesto.org/)
-*   首页UI
-*   实现网站的基本布局：bootstrap, SMACSS
-*   测试框架：rspec, capybara, jasmine, factory\_girl
-*   项目创建
-
+https://github.com/19wu/19wu/pulls?direction=desc&page=1&sort=created&state=closed
